@@ -1,5 +1,5 @@
-{% extends "tasks/base.html" %} {% block title %}My Tasks{% endblock %} {% block
-content %}
+{% extends "tasks/base.html" %} {% block title %}My Tasks{% endblock %}
+{% block content %}
 <h1>My Tasks ({{ pending_count }} pending)</h1>
 
 {% if tasks %} {% for task in tasks %}
@@ -11,5 +11,4 @@ content %}
   <small>Created: {{ task.created_at|date:"M d, Y" }}</small>
 </div>
 {% endfor %} {% else %}
-<p>No tasks yet. <a href="{% url 'task_create' %}">Create one!</a></p>
 {% endif %} {% endblock %}
