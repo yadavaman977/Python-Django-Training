@@ -1,6 +1,5 @@
 from django import forms
 from .models import Task
-from .forms import TaskForm
 
 class TaskForm(forms.ModelForm):
     class Meta:

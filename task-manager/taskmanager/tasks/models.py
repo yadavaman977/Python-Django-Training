@@ -1,20 +1,5 @@
-# from django.db import models
-
-# Create your models here.
-# class Task(models.Model):
-#     title = models.CharField(max_length=200)
-#     description = models.TextField(blank=True)
-#     completed = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return self.title
-    
-#     class Meta:
-#         ordering = ['-created_at'] #where - means descending order, so the most recently created tasks will appear first.
-
 from django.db import models
+
 class Task(models.Model):
     PRIORITY_CHOICES = [
         ('H', 'High'),
@@ -29,8 +14,9 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):   
+    def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-created_at']
+
