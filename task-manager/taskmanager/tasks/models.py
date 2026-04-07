@@ -15,7 +15,6 @@
 #         ordering = ['-created_at'] #where - means descending order, so the most recently created tasks will appear first.
 
 from django.db import models
-
 class Task(models.Model):
     PRIORITY_CHOICES = [
         ('H', 'High'),
@@ -30,10 +29,8 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def _str_(self):
+    def __str__(self):   
         return self.title
 
     class Meta:
         ordering = ['-created_at']
-
-    
