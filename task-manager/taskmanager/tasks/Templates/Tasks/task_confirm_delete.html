@@ -1,0 +1,17 @@
+{% extends "tasks/base.html" %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<h1>Delete Task</h1>
+<p>Are you sure you want to delete <strong>"{{ task.title }}"</strong>?</p>
+<p>This action cannot be undone.</p>
+
+<form method="POST" style="margin-top:15px;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger" style="border:none; cursor:pointer; font-size:1em; padding:10px 24px;">
+        Yes, Delete
+    </button>
+    <a href="{% url 'task_detail' task.pk %}" style="margin-left:10px;">Cancel</a>
+</form>
+{% endblock %}

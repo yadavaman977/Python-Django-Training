@@ -1,0 +1,25 @@
+{% extends "tasks/base.html" %}
+
+{% block title %}My Tasks{% endblock %}
+
+{% block content %}
+<h1>My Tasks ({{ pending_count }} pending)</h1>
+
+{% if tasks %}
+{% for task in tasks %}
+<div class="task-card {% if task.completed %}done{% endif %}">
+  <h3>
+    {% if task.completed %}✅{% else %}⬜{% endif %}
+    <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+  </h3>
+  <small>
+    Created: {{ task.created_at|date:"M d, Y" }}
+    · <a href="{% url 'task_update' task.pk %}">Edit</a>
+    · <a href="{% url 'task_delete' task.pk %}" style="color:#e74c3c;">Delete</a>
+  </small>
+</div>
+{% endfor %}
+{% else %}
+<p>No tasks yet. <a href="{% url 'task_create' %}">Create one!</a></p>x
+{% endif %}
+{% endblock %}
