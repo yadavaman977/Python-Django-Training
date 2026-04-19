@@ -1,0 +1,20 @@
+<!-- tasks/templates/tasks/login.html -->
+{% extends "tasks/base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Log In</h1>
+<form method="POST" style="margin-top:15px;">
+    {% csrf_token %}
+    {% for field in form %}
+    <div style="margin-bottom:12px;">
+        <label style="display:block; font-weight:bold; margin-bottom:4px;">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
+    {% if form.errors %}
+    <p style="color:red;">Invalid username or password.</p>
+    {% endif %}
+    <button type="submit" class="btn" style="border:none; cursor:pointer; padding:10px 24px;">Log In</button>
+    <p style="margin-top:10px;">No account? <a href="{% url 'register' %}">Register</a></p>
+</form>
+{% endblock %}

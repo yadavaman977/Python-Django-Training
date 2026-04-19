@@ -1,0 +1,20 @@
+<!-- tasks/templates/tasks/register.html -->
+{% extends "tasks/base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h1>Create Account</h1>
+<form method="POST" style="margin-top:15px;">
+    {% csrf_token %}
+    {% for field in form %}
+    <div style="margin-bottom:12px;">
+        <label style="display:block; font-weight:bold; margin-bottom:4px;">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}
+        <p style="color:red; font-size:0.85em;">{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn" style="border:none; cursor:pointer; padding:10px 24px;">Register</button>
+    <p style="margin-top:10px;">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+</form>
+{% endblock %}
